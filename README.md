@@ -1,6 +1,6 @@
-# The Kubernetes Cluster Info tool
+# The Kubernetes cluster info tool
 
-This tool is a quick and dirty test of the `client-go` package (for Go clients talking to a Kkubernetes cluster), at the moment this tool will fetch the number of pods, deployments and services in each namespace and then print this information to the user.
+This tool is a quick and dirty test of the `client-go` package (for Go clients talking to a Kubernetes cluster), at the moment this tool will fetch the number of pods, deployments and services in each namespace and then print this information to the user.
 
 API authentication method are _out of cluster_ and you need your kubeconfig file that holds the context information to initialize a client. The same file that `kubectl` uses.
 
