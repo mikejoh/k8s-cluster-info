@@ -18,26 +18,27 @@ type clusterNamespace struct {
 	numServices    int
 }
 
-func printClusterInfo(m map[int]clusterNamespace) {
-	var (
-		totalPods        int
-		totalDeployments int
-		totalServices    int
-	)
+type totalClusterStats struct {
+	totalPods        int
+	totalDeployments int
+	totalServices    int
+}
 
+func printClusterInfo(m map[int]clusterNamespace) {
+	var t totalClusterStats
 	for _, ns := range m {
 		fmt.Printf("Namespace: %s\n", ns.name)
 		fmt.Printf("\tPods: %d\n", ns.numPods)
 		fmt.Printf("\tDeployments: %d\n", ns.numDeployments)
 		fmt.Printf("\tServices: %d\n", ns.numServices)
-		totalPods += ns.numPods
-		totalDeployments += ns.numDeployments
-		totalServices += ns.numServices
+		t.totalPods += ns.numPods
+		t.totalDeployments += ns.numDeployments
+		t.totalServices += ns.numServices
 	}
 	fmt.Printf("\nCluster totals:\n")
-	fmt.Printf("\tPods: %d\n", totalPods)
-	fmt.Printf("\tDeployments: %d\n", totalDeployments)
-	fmt.Printf("\tServices: %d\n", totalServices)
+	fmt.Printf("\tPods: %d\n", t.totalPods)
+	fmt.Printf("\tDeployments: %d\n", t.totalDeployments)
+	fmt.Printf("\tServices: %d\n", t.totalServices)
 }
 
 func homeDir() string {
